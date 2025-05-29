@@ -1,0 +1,208 @@
+:root {
+  --primary: #4f46e5;
+  --danger: #ef4444;
+  --bg: #f9fafb;
+  --dark-bg: #1f2937;
+  --text: #111827;
+  --text-light: #d1d5db;
+  --card: #ffffff;
+  --dark-card: #374151;
+  --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg: var(--dark-bg);
+  --text: var(--text-light);
+  --card: var(--dark-card);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color var(--transition), color var(--transition);
+  padding: 2rem;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: auto;
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transition: background var(--transition);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  outline: none;
+  transition: all var(--transition);
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+button {
+  padding: 0.75rem 1rem;
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+button:hover {
+  background-color: #4338ca;
+}
+
+.danger {
+  background-color: var(--danger);
+}
+
+.danger:hover {
+  background-color: #b91c1c;
+}
+
+.todos-list {
+  list-style: none;
+  margin-top: 1.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todos-list li {
+  background: var(--card);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.todos-list li.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todos-list li input[type="checkbox"] {
+  margin-right: 1rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
